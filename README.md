@@ -9,7 +9,7 @@ This project run as per default on localhost:8080
 
 ## calculate
 
-    api/calculate
+    /api/calculate
 
 This endpoint expects a json object via a POST request. The json should represent a valid bowling game. 
 If an invalid json or game representation is sent a http 400 response is sent back with a description of the error.
