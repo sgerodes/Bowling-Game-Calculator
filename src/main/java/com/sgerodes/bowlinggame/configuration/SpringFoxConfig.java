@@ -22,7 +22,8 @@ public class SpringFoxConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.sgerodes"))
                 .paths(PathSelectors.ant("/api/*"))
                 .build()
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .useDefaultResponseMessages(false);
     }
     private ApiInfo apiInfo() {
         return new ApiInfo(
