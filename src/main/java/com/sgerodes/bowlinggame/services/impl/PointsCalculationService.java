@@ -1,8 +1,8 @@
 package com.sgerodes.bowlinggame.services.impl;
 
 
-import com.sgerodes.bowlinggame.models.BowlingGame;
-import com.sgerodes.bowlinggame.models.Frame;
+import com.sgerodes.bowlinggame.models.BowlingGameModel;
+import com.sgerodes.bowlinggame.models.FrameModel;
 import com.sgerodes.bowlinggame.services.IPointsCalculationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +17,12 @@ public class PointsCalculationService implements IPointsCalculationService {
     private static final Logger logger = LoggerFactory.getLogger(PointsCalculationService.class);
 
     @Override
-    public int calculatePoints(BowlingGame game) {
-        List<Frame> frames = game.getFrames();
+    public int calculatePoints(BowlingGameModel game) {
+        List<FrameModel> frames = game.getFrames();
         int overallScore = 0;
         LinkedList<Integer> strikes = new LinkedList<>(); // a Queue; add a "2" counter if a strike appears, remove by FIFO
         int spareCount = 0; // increment by 1 if a spare appears
-        for (Frame curr : frames) {
+        for (FrameModel curr : frames) {
             overallScore += curr.getOverallScore();
             if (!strikes.isEmpty()) {
                 for (int i = 0; i < strikes.size(); ++i) {

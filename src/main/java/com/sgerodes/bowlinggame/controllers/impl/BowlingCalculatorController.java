@@ -3,8 +3,9 @@ package com.sgerodes.bowlinggame.controllers.impl;
 import com.sgerodes.bowlinggame.controllers.IBowlingCalculatorController;
 import com.sgerodes.bowlinggame.exceptions.game.InvalidInitialStateException;
 import com.sgerodes.bowlinggame.exceptions.http.InvalidRequestInputException;
-import com.sgerodes.bowlinggame.models.BowlingGame;
-import com.sgerodes.bowlinggame.models.CalculationOutput;
+import com.sgerodes.bowlinggame.models.BowlingGameModel;
+import com.sgerodes.bowlinggame.models.CalculationOutputModel;
+import com.sgerodes.bowlinggame.models.FramesInputModel;
 import com.sgerodes.bowlinggame.services.IGameValidator;
 import com.sgerodes.bowlinggame.services.IJsonGameParser;
 import com.sgerodes.bowlinggame.services.IPointsCalculationService;
@@ -33,12 +34,12 @@ public class BowlingCalculatorController implements IBowlingCalculatorController
 
     @Override
     @RequestMapping(value = "/calculate", method = RequestMethod.POST, produces = "application/json")
-    public CalculationOutput calculatePoints(@RequestBody String body) {
+    public CalculationOutputModel calculatePoints(@RequestBody FramesInputModel body) {
         try {
-            BowlingGame game = parser.parseFromJson(body);
+            BowlingGameModel game = parser.parseToBowlingGame(body);
             validator.validateGame(game);
             int overallPoints = calculationService.calculatePoints(game);
-            return new CalculationOutput(overallPoints);
+            return new CalculationOutputModel(overallPoints);
         } catch (InvalidInitialStateException e) {
             logger.error("Could not calculate points of the game", e);
             String message = e.getMessage();

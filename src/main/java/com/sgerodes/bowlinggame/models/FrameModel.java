@@ -6,7 +6,7 @@ import com.sgerodes.bowlinggame.exceptions.game.InvalidFrameException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Frame {
+public class FrameModel {
     static int PINS_AMOUNT = 10;
     static int MAX_AMOUNT_OF_ROLLS = 3;
 
@@ -15,27 +15,27 @@ public class Frame {
     protected boolean last;
 
 
-    public Frame() {
+    public FrameModel() {
         this.last = false;
     }
 
-    public Frame(Integer firstRoll) {
+    public FrameModel(Integer firstRoll) {
         this.last = false;
         rolls = Arrays.asList(firstRoll);
     }
 
 
-    public Frame(Integer firstRoll, Integer secondRoll) {
+    public FrameModel(Integer firstRoll, Integer secondRoll) {
         this.last = false;
         rolls = Arrays.asList(firstRoll, secondRoll);
     }
 
-    public Frame(Integer firstRoll, Integer secondRoll, Integer thirdRoll) {
+    public FrameModel(Integer firstRoll, Integer secondRoll, Integer thirdRoll) {
         this.last = false;
         rolls = Arrays.asList(firstRoll, secondRoll, thirdRoll);
     }
 
-    public Frame(List<Integer> rolls) {
+    public FrameModel(List<Integer> rolls) {
         this.last = false;
         if (rolls.size() > MAX_AMOUNT_OF_ROLLS) {
             throw new InvalidFrameException(String.format("A frame can have a maximum amount of %s rolls, but %s was provided", MAX_AMOUNT_OF_ROLLS, rolls.size()));
@@ -72,7 +72,7 @@ public class Frame {
         this.last = last;
     }
 
-    public Frame last() {
+    public FrameModel last() {
         this.setLast(true);
         return this; // for better initialization e.g. new Frame().last()
     }

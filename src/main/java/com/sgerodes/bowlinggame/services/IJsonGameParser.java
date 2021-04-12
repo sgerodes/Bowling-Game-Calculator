@@ -1,7 +1,8 @@
 package com.sgerodes.bowlinggame.services;
 
-import com.sgerodes.bowlinggame.models.BowlingGame;
+import com.sgerodes.bowlinggame.models.BowlingGameModel;
+import com.sgerodes.bowlinggame.models.FramesInputModel;
 
 public interface IJsonGameParser {
-    public BowlingGame parseFromJson(String json);
+    public BowlingGameModel parseToBowlingGame(FramesInputModel input);
 }

@@ -7,42 +7,42 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BowlingGame {
+public class BowlingGameModel {
     static int FRAMES_AMOUNT = 10;
 
-    private static final Logger logger = LoggerFactory.getLogger(BowlingGame.class);
+    private static final Logger logger = LoggerFactory.getLogger(BowlingGameModel.class);
 
-    protected List<Frame> frames;
+    protected List<FrameModel> frames;
 
-    public BowlingGame() {
+    public BowlingGameModel() {
         this.frames = new ArrayList<>();
     }
 
-    public BowlingGame(List<Frame> frames) {
+    public BowlingGameModel(List<FrameModel> frames) {
         this.frames = frames;
     }
 
-    public void addFrame(Frame frame) {
+    public void addFrame(FrameModel frame) {
         this.frames.add(frame);
     }
 
-    public List<Frame> getFrames() {
+    public List<FrameModel> getFrames() {
         return frames;
     }
 
-    public void setFrames(List<Frame> frames) {
+    public void setFrames(List<FrameModel> frames) {
         this.frames = frames;
     }
 
-    public Frame getFrame(int n) {
+    public FrameModel getFrame(int n) {
         return this.frames.get(n);
     }
 
-    public Frame getLastFrame() {
+    public FrameModel getLastFrame() {
         return this.frames.get(this.frames.size() - 1);
     }
 
-    public void setFrame(int i, Frame frame) {
+    public void setFrame(int i, FrameModel frame) {
         this.frames.set(i, frame);
     }
 

@@ -2,8 +2,8 @@ package com.sgerodes.bowlinggame.services.impl;
 
 import com.sgerodes.bowlinggame.exceptions.game.InvalidFrameException;
 import com.sgerodes.bowlinggame.exceptions.game.InvalidGameException;
-import com.sgerodes.bowlinggame.models.BowlingGame;
-import com.sgerodes.bowlinggame.models.Frame;
+import com.sgerodes.bowlinggame.models.BowlingGameModel;
+import com.sgerodes.bowlinggame.models.FrameModel;
 import com.sgerodes.bowlinggame.services.IGameValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,10 +15,10 @@ public class GameValidator implements IGameValidator {
     private static final Logger logger = LoggerFactory.getLogger(GameValidator.class);
 
     @Override
-    public void validateGame(BowlingGame game) {
+    public void validateGame(BowlingGameModel game) {
         //should have Correct amount of frames
-        if (game.getFrames().size() != BowlingGame.getFramesAmount()) {
-            throw new InvalidGameException(String.format("The game expected %s frames, got %s", BowlingGame.getFramesAmount(), game.getFrames().size()));
+        if (game.getFrames().size() != BowlingGameModel.getFramesAmount()) {
+            throw new InvalidGameException(String.format("The game expected %s frames, got %s", BowlingGameModel.getFramesAmount(), game.getFrames().size()));
         }
         // each frame should have correct amount of rolls
         game.getFrames().forEach(
@@ -60,9 +60,9 @@ public class GameValidator implements IGameValidator {
             }
         });
         // last frame: allow third roll only if it is a strike or spare
-        Frame lastFrame = game.getLastFrame();
+        FrameModel lastFrame = game.getLastFrame();
         if (lastFrame.getThirdRoll() != null) {
-            boolean lastIsStrikeOrSpare = lastFrame.getFirstRollScore() + lastFrame.getSecondRollScore() >= Frame.getPinsAmount();
+            boolean lastIsStrikeOrSpare = lastFrame.getFirstRollScore() + lastFrame.getSecondRollScore() >= FrameModel.getPinsAmount();
             if (!lastIsStrikeOrSpare) {
                 throw new InvalidFrameException(String.format("Last frame third roll is only allowed if at least one spare or strike was performed in the first two rolls. Got %s", lastFrame.getRolls()));
             }
