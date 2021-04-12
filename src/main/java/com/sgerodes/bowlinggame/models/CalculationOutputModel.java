@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "Calculation response")
 public class CalculationOutputModel {
-    @ApiModelProperty(value = "frames", example = "114")
+    @ApiModelProperty(example = "114")
     protected Integer overallPoints;
 
     public CalculationOutputModel(Integer points) {

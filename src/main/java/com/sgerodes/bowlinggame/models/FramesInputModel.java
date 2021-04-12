@@ -6,9 +6,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApiModel
+@ApiModel(value = "Frames input object")
 public class FramesInputModel {
-    @ApiModelProperty(value = "frames", example = "[[10], [7,3], [3,5], [0,7], [10], [3,4], [9,0], [5,1], [8,1], [3,7,8]]")
+    @ApiModelProperty(example = "[[10], [7,3], [3,5], [0,7], [10], [3,4], [9,0], [5,1], [8,1], [3,7,8]]")
     protected List<List<Integer>> frames;
 
     public FramesInputModel() {
