@@ -18,15 +18,20 @@ public class PointsCalculationService implements IPointsCalculationService {
 
     @Override
     public int calculatePoints(BowlingGameModel game) {
+        logger.debug(String.format("Start calculating points of game: %s", game));
         List<FrameModel> frames = game.getFrames();
         int overallScore = 0;
         LinkedList<Integer> strikes = new LinkedList<>(); // a Queue; add a "2" counter if a strike appears, remove by FIFO
         int spareCount = 0; // increment by 1 if a spare appears
         for (FrameModel curr : frames) {
+            logger.trace(String.format("Calculating Frame %s", curr));
             overallScore += curr.getOverallScore();
+            logger.trace(String.format("Add frame base score: %s", curr.getOverallScore()));
             if (!strikes.isEmpty()) {
+                logger.trace("Adding bonus for previous strikes");
                 for (int i = 0; i < strikes.size(); ++i) {
                     for (int roll : curr.getRolls()) {
+                        logger.trace(String.format("Adding bonus: %s", roll));
                         overallScore += roll;
                         strikes.set(i, strikes.get(i) - 1);
                         if (strikes.get(i) == 0) {
@@ -42,6 +47,7 @@ public class PointsCalculationService implements IPointsCalculationService {
                 overallScore += curr.getFirstRollScore();
                 spareCount--;
             }
+            logger.trace(String.format("Overall score after strike and spare bonus: %s", overallScore));
 
             if (curr.isSpare()) {
                 spareCount++;
@@ -72,6 +78,8 @@ public class PointsCalculationService implements IPointsCalculationService {
 //                }
 //            }
         }
+
+        logger.info(String.format("Calculated points for the game: %s", overallScore));
         return overallScore;
     }
 }

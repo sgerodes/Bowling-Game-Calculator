@@ -18,6 +18,7 @@ public class JsonGameParser implements IJsonGameParser {
 
     @Override
     public BowlingGameModel parseToBowlingGame(FramesInputModel input) {
+        logger.debug(String.format("Start parsing: '%s'", input));
         BowlingGameModel game = new BowlingGameModel();
             for (List<Integer> parsedFrame : input.getFrames()) {
                 FrameModel frame = new FrameModel(parsedFrame);
@@ -26,6 +27,7 @@ public class JsonGameParser implements IJsonGameParser {
                 }
                 game.addFrame(frame);
             }
+        logger.debug(String.format("Parsed to game: %s", game));
         return game;
     }
 }

@@ -16,10 +16,12 @@ public class GameValidator implements IGameValidator {
 
     @Override
     public void validateGame(BowlingGameModel game) {
+        logger.debug(String.format("Validating game %s", game));
         //should have Correct amount of frames
         if (game.getFrames().size() != BowlingGameModel.getFramesAmount()) {
             throw new InvalidGameException(String.format("The game expected %s frames, got %s", BowlingGameModel.getFramesAmount(), game.getFrames().size()));
         }
+        logger.debug("Game has correct amount of frames");
         // each frame should have correct amount of rolls
         game.getFrames().forEach(
                 frame -> {
@@ -30,6 +32,7 @@ public class GameValidator implements IGameValidator {
                     }
                 }
         );
+        logger.debug("Each frame has correct amount of rolls");
         // only the last one should be marked as last
         for (int i = 0; i < game.getFrames().size(); i++) {
             if (i != game.getFrames().size() - 1 && game.getFrame(i).isLast()) {
@@ -39,6 +42,7 @@ public class GameValidator implements IGameValidator {
                 throw new InvalidFrameException("Last frame is not marked last");
             }
         }
+        logger.debug("The 'last' flag is set correct");
         // each frame should have correct max and min amount of pins impacted
         game.getFrames().forEach(frame -> {
             frame.getRolls().forEach(roll -> {
@@ -51,6 +55,7 @@ public class GameValidator implements IGameValidator {
                 throw new InvalidFrameException(String.format("Invalid frame %s. Sum of pins impacted expected to be between (inclusive) %s and %s. Got %s", frame, 0, frameMaxScore, frame.getOverallScore()));
             }
         });
+        logger.debug("Each frame has valid range of pins impacted");
         // if strike then should have only one roll
         game.getFrames().forEach(frame -> {
             if (frame.getFirstRollScore() == 10) {
@@ -59,6 +64,7 @@ public class GameValidator implements IGameValidator {
                 }
             }
         });
+        logger.debug("Strike shots have valid structure");
         // last frame: allow third roll only if it is a strike or spare
         FrameModel lastFrame = game.getLastFrame();
         if (lastFrame.getThirdRoll() != null) {
@@ -67,5 +73,7 @@ public class GameValidator implements IGameValidator {
                 throw new InvalidFrameException(String.format("Last frame third roll is only allowed if at least one spare or strike was performed in the first two rolls. Got %s", lastFrame.getRolls()));
             }
         }
+        logger.debug("Third roll rule is respected");
+        logger.info("Game is valid");
     }
 }
