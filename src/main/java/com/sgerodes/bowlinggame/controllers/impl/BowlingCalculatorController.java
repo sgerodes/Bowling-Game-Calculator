@@ -36,6 +36,7 @@ public class BowlingCalculatorController implements IBowlingCalculatorController
     @RequestMapping(value = "/calculate", method = RequestMethod.POST, produces = "application/json")
     public CalculationOutputModel calculatePoints(@RequestBody FramesInputModel body) {
         try {
+            logger.debug(String.format("Input received: %s", body));
             BowlingGameModel game = parser.parseToBowlingGame(body);
             validator.validateGame(game);
             int overallPoints = calculationService.calculatePoints(game);

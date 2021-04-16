@@ -26,4 +26,11 @@ public class FramesInputModel {
     public void setFrames(List<List<Integer>> frames) {
         this.frames = frames;
     }
+
+    @Override
+    public String toString() {
+        return "FramesInputModel{" +
+                "frames=" + frames +
+                '}';
+    }
 }
