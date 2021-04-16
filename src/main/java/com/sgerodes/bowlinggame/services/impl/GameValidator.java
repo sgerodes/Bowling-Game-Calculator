@@ -16,7 +16,7 @@ public class GameValidator implements IGameValidator {
 
     @Override
     public void validateGame(BowlingGameModel game) {
-        logger.debug(String.format("Validating game %s", game));
+        logger.debug(String.format("Validating game: %s", game));
         //should have Correct amount of frames
         if (game.getFrames().size() != BowlingGameModel.getFramesAmount()) {
             throw new InvalidGameException(String.format("The game expected %s frames, got %s", BowlingGameModel.getFramesAmount(), game.getFrames().size()));

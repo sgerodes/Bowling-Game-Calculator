@@ -24,7 +24,7 @@ public class PointsCalculationService implements IPointsCalculationService {
         LinkedList<Integer> strikes = new LinkedList<>(); // a Queue; add a "2" counter if a strike appears, remove by FIFO
         int spareCount = 0; // increment by 1 if a spare appears
         for (FrameModel curr : frames) {
-            logger.trace(String.format("Calculating Frame %s", curr));
+            logger.trace(String.format("Calculating %s", curr));
             overallScore += curr.getOverallScore();
             logger.trace(String.format("Add frame base score: %s", curr.getOverallScore()));
             if (!strikes.isEmpty()) {
@@ -47,7 +47,6 @@ public class PointsCalculationService implements IPointsCalculationService {
                 overallScore += curr.getFirstRollScore();
                 spareCount--;
             }
-            logger.trace(String.format("Overall score after strike and spare bonus: %s", overallScore));
 
             if (curr.isSpare()) {
                 spareCount++;
@@ -77,6 +76,7 @@ public class PointsCalculationService implements IPointsCalculationService {
 //                    overallScore += curr.getThirdRollScore();
 //                }
 //            }
+            logger.trace(String.format("Overall score after strike and spare bonus: %s", overallScore));
         }
 
         logger.info(String.format("Calculated points for the game: %s", overallScore));
