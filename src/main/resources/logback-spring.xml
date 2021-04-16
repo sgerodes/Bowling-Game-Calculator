@@ -18,7 +18,11 @@
         <appender-ref ref="Console" />
     </root>
 
-    <logger name="com.sgerodes.bowlinggame" level="trace" additivity="false">
+    <logger name="com.sgerodes.bowlinggame" level="debug" additivity="false">
+        <appender-ref ref="Console" />
+    </logger>
+
+    <logger name="com.sgerodes.bowlinggame.services.impl.PointsCalculationService" level="trace" additivity="false">
         <appender-ref ref="Console" />
     </logger>
 
