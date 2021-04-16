@@ -1,0 +1,20 @@
+Bowling-Game
+Bitte erstelle ein Programm, welches aus den Punktzahlen einzelner Würfe beim Bowling die
+Gesamtpunktzahl eines Spieles ermitteln kann.
+
+Hier die Spielregeln für das Bowling-Game:
+Das Spiel besteht aus 10 Frames. In jedem Frame hat der Spieler zwei Versuche (Rolls) und kann bis
+zu 10 Pins umzuwerfen. Die Punktzahl pro Frame setzt sich aus der Anzahl der umgeworfenen Pins
+und weiteren Boni zusammen. Diese Boni ergeben sich aus Spares und Strikes.
+
+Ein Spare liegt vor, wenn der Spieler alle 10 Pins in einem Frame umgeworfen hat. Der Bonus für dieses
+Frame ist die Anzahl der Pins, die im direkt darauf folgenden Roll umgeworfen werden. Ein Beispiel ist
+Frame 3 im obigen Bild. Der Score ist 10 (Anzahl der umgeworfenen Pins) plus einen Bonus von 5 (Die
+Anzahl der Pins im ersten Roll der 4. Frame).
+
+Ein Strike liegt vor, wenn der Spieler alle 10 Pins im ersten Versuch umwirft. Der Bonus hierfür ist die
+Anzahl der umgeworfenen Pins der nächsten zwei Rolls.
+
+Im zehnten Frame darf ein Spieler, der einen Spare oder einen Strike erreicht einen zusätzlichen Roll
+spielen, um die Frame zu beenden. Es können aber nicht mehr als 3 Rolls im letzten Frame gespielt
+werden.
