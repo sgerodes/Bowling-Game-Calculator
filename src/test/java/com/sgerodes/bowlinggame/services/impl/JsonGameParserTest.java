@@ -1,6 +1,6 @@
 package com.sgerodes.bowlinggame.services.impl;
 
-import com.sgerodes.bowlinggame.models.FramesInputModel;
+import com.sgerodes.bowlinggame.models.api.FramesInputModel;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

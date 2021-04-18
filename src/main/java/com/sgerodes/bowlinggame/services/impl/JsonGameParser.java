@@ -1,9 +1,8 @@
 package com.sgerodes.bowlinggame.services.impl;
 
-import com.sgerodes.bowlinggame.exceptions.http.InvalidRequestInputException;
-import com.sgerodes.bowlinggame.models.BowlingGameModel;
-import com.sgerodes.bowlinggame.models.FrameModel;
-import com.sgerodes.bowlinggame.models.FramesInputModel;
+import com.sgerodes.bowlinggame.models.game.BowlingGameModel;
+import com.sgerodes.bowlinggame.models.game.FrameModel;
+import com.sgerodes.bowlinggame.models.api.FramesInputModel;
 import com.sgerodes.bowlinggame.services.IJsonGameParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
