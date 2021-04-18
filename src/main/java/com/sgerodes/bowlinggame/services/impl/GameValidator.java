@@ -59,7 +59,7 @@ public class GameValidator implements IGameValidator {
         // if strike then should have only one roll
         game.getFrames().forEach(frame -> {
             if (frame.getFirstRollScore() == 10) {
-                if (frame.getSecondRoll() != null) {
+                if (frame.getSecondRoll() != null && !frame.isLast()) {
                     throw new InvalidFrameException(String.format("In a strike frame there should be only one roll, got %s", frame));
                 }
             }
