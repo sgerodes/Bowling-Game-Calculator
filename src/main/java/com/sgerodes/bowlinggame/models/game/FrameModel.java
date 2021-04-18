@@ -1,4 +1,4 @@
-package com.sgerodes.bowlinggame.models;
+package com.sgerodes.bowlinggame.models.game;
 
 
 import com.sgerodes.bowlinggame.exceptions.game.InvalidFrameException;

@@ -9,7 +9,7 @@ This project run as per default on localhost:8080
 
 ## calculate
 
-    /api/calculate
+    POST /api/calculate
 
 This endpoint expects a json object via a POST request. The json should represent a valid bowling game. 
 If an invalid json or game representation is sent a http 400 response is sent back with a description of the error.
@@ -43,6 +43,26 @@ Example:
 
 
 If an invalid request is sent an error message would be displayed.
+
+## Get all previously calculated games
+
+    GET /api/calculations
+
+
+Json response example:
+
+    [
+        {
+            "id": 1,
+            "initialInput": "[[7, 1], [3, 4], [3, 4], [3, 4], [6, 4], [3, 4], [5, 4], [3, 2], [3, 1], [9, 1, 6]]",
+            "overallPoints": 83
+        },
+        {
+            "id": 2,
+            "initialInput": "[[1, 2], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 7, 6]]",
+            "overallPoints": 75
+        }
+    ]
 
 # Swagger API Documentation
 Is accessible at 

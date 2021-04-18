@@ -1,6 +1,7 @@
 package com.sgerodes.bowlinggame.models;
 
 import com.sgerodes.bowlinggame.exceptions.game.InvalidFrameException;
+import com.sgerodes.bowlinggame.models.game.FrameModel;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

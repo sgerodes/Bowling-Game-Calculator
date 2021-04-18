@@ -1,4 +1,4 @@
-package com.sgerodes.bowlinggame.models;
+package com.sgerodes.bowlinggame.models.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
