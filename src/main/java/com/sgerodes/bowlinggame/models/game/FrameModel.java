@@ -8,7 +8,6 @@ import java.util.List;
 
 public class FrameModel {
     static int PINS_AMOUNT = 10;
-    static int MAX_AMOUNT_OF_ROLLS = 3;
 
     // the list can have up to 3 rolls. If a non existing roll is accessed a null is returned
     protected List<Integer> rolls;
@@ -37,9 +36,6 @@ public class FrameModel {
 
     public FrameModel(List<Integer> rolls) {
         this.last = false;
-        if (rolls.size() > MAX_AMOUNT_OF_ROLLS) {
-            throw new InvalidFrameException(String.format("A frame can have a maximum amount of %s rolls, but %s was provided", MAX_AMOUNT_OF_ROLLS, rolls.size()));
-        }
         this.rolls = rolls;
     }
 

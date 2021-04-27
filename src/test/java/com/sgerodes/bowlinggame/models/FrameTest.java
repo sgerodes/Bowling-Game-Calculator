@@ -1,6 +1,5 @@
 package com.sgerodes.bowlinggame.models;
 
-import com.sgerodes.bowlinggame.exceptions.game.InvalidFrameException;
 import com.sgerodes.bowlinggame.models.game.FrameModel;
 import org.junit.jupiter.api.Test;
 
@@ -13,15 +12,10 @@ class FrameTest {
 
     @Test
     void initTest() {
-
         assertFalse(new FrameModel(1).isLast());
         assertFalse(new FrameModel(Arrays.asList(1)).isLast());
         assertFalse(new FrameModel(1,2).isLast());
         assertFalse(new FrameModel(Arrays.asList(1, 2)).isLast());
-
-        assertThrows(InvalidFrameException.class, () -> new FrameModel(Arrays.asList(1,2,3,4)));
-
-
     }
 
     @Test
