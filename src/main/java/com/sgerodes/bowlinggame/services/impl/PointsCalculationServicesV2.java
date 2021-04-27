@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class PointsCalculationServicesV2 implements IPointsCalculationService {
 
-    private static final Logger logger = LoggerFactory.getLogger(PointsCalculationService.class);
+    private static final Logger logger = LoggerFactory.getLogger(PointsCalculationServicesV2.class);
 
     @Override
     public int calculatePoints(BowlingGameModel game) {

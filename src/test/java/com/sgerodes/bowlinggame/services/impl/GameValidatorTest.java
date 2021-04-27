@@ -6,16 +6,25 @@ import com.sgerodes.bowlinggame.models.game.BowlingGameModel;
 import com.sgerodes.bowlinggame.models.game.FrameModel;
 import com.sgerodes.bowlinggame.services.IGameValidator;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 class GameValidatorTest {
 
-    IGameValidator gameValidator = new GameValidator();
-
+    @Autowired
+    protected IGameValidator gameValidator;
+;
     @Test
     void testValidator() {
         assertThrows(InvalidGameException.class, () -> gameValidator.validateGame(new BowlingGameModel(Arrays.asList(new FrameModel(1,2)))));

@@ -1,15 +1,23 @@
 package com.sgerodes.bowlinggame.services.impl;
 
 import com.sgerodes.bowlinggame.models.api.FramesInputModel;
+import com.sgerodes.bowlinggame.services.IJsonGameParser;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 class JsonGameParserTest {
 
-    JsonGameParser parser = new JsonGameParser();
+    @Autowired
+    protected IJsonGameParser parser;
 
     @Test
     void parseJson() {
