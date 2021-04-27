@@ -64,22 +64,29 @@ public class PointsCalculationService implements IPointsCalculationService {
             // if the code should be fully conform to the rules given in the task,
             // please uncomment the following section.
 
-//            if (curr.isLast()){
-//                // special case for last frame strikes and spares, because several strikes/spares could happen in ode frame
-//                boolean firstRollIsStrike = curr.getFirstRollScore() == Frame.getPinsAmount();
-//                if (firstRollIsStrike){
-//                    overallScore += curr.getSecondRollScore() + curr.getThirdRollScore();
-//                }
-//                boolean secondRollIsStrictlySpare = !firstRollIsStrike && curr.getFirstRollScore() + curr.getSecondRollScore() == Frame.getPinsAmount();
-//                boolean secondRollIsStrike = curr.getSecondRollScore() == Frame.getPinsAmount();
-//                if (secondRollIsStrictlySpare || secondRollIsStrike){
-//                    overallScore += curr.getThirdRollScore();
-//                }
-//            }
+            //overallScore += calculateLastFrameBonusPoints(curr);
+
             logger.trace(String.format("Overall score after strike and spare bonus: %s", overallScore));
         }
 
         logger.info(String.format("Calculated points for the game: %s", overallScore));
         return overallScore;
+    }
+
+    private int calculateLastFrameBonusPoints(FrameModel curr){
+        int score = 0;
+            if (curr.isLast()){
+                // special case for last frame strikes and spares, because several strikes/spares could happen in ode frame
+                boolean firstRollIsStrike = curr.getFirstRollScore() == FrameModel.getPinsAmount();
+                if (firstRollIsStrike){
+                    score += curr.getSecondRollScore() + curr.getThirdRollScore();
+                }
+                boolean secondRollIsStrictlySpare = !firstRollIsStrike && curr.getFirstRollScore() + curr.getSecondRollScore() == FrameModel.getPinsAmount();
+                boolean secondRollIsStrike = curr.getSecondRollScore() == FrameModel.getPinsAmount();
+                if (secondRollIsStrictlySpare || secondRollIsStrike){
+                    score += curr.getThirdRollScore();
+                }
+            }
+            return score;
     }
 }

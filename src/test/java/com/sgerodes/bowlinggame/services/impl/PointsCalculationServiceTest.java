@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PointsCalculationServiceTest {
 
-    IPointsCalculationService calculationService = new PointsCalculationService();
+    IPointsCalculationService calculationService = new PointsCalculationServicesV2();
 
     @Test
     void validPoints() {

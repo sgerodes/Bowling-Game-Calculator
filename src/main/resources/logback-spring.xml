@@ -26,4 +26,8 @@
         <appender-ref ref="Console" />
     </logger>
 
+    <logger name="com.sgerodes.bowlinggame.services.impl.PointsCalculationServicesV2" level="trace" additivity="false">
+        <appender-ref ref="Console" />
+    </logger>
+
 </configuration>
