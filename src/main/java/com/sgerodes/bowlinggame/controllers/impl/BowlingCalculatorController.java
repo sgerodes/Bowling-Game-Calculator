@@ -3,11 +3,10 @@ package com.sgerodes.bowlinggame.controllers.impl;
 import com.sgerodes.bowlinggame.controllers.IBowlingCalculatorController;
 import com.sgerodes.bowlinggame.exceptions.game.InvalidInitialStateException;
 import com.sgerodes.bowlinggame.exceptions.http.InvalidRequestInputException;
-import com.sgerodes.bowlinggame.models.db.CalculationPersistenceModel;
+import com.sgerodes.bowlinggame.models.api.HistoryOutputModel;
 import com.sgerodes.bowlinggame.models.api.CalculationOutputModel;
 import com.sgerodes.bowlinggame.models.api.FramesInputModel;
 import com.sgerodes.bowlinggame.services.*;
-import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +41,8 @@ public class BowlingCalculatorController implements IBowlingCalculatorController
 
 
     @Override
-    @RequestMapping(value = "/calculations", method = RequestMethod.GET, produces = "application/json")
-    public List<CalculationPersistenceModel> getAllCalculations() {
-        return framesService.calculationsList();
+    @RequestMapping(value = "/history", method = RequestMethod.GET, produces = "application/json")
+    public List<HistoryOutputModel> getAllCalculations() {
+        return framesService.getAllHistoryOutput();
     }
 }

@@ -2,7 +2,7 @@ package com.sgerodes.bowlinggame.controllers;
 
 import com.sgerodes.bowlinggame.models.api.CalculationOutputModel;
 import com.sgerodes.bowlinggame.models.api.FramesInputModel;
-import com.sgerodes.bowlinggame.models.db.CalculationPersistenceModel;
+import com.sgerodes.bowlinggame.models.api.HistoryOutputModel;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,5 +20,5 @@ public interface IBowlingCalculatorController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK")
     })
-    List<CalculationPersistenceModel> getAllCalculations();
+    List<HistoryOutputModel> getAllCalculations();
 }

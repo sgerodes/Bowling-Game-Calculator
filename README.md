@@ -46,7 +46,7 @@ If an invalid request is sent an error message would be displayed.
 
 ## Get all previously calculated games
 
-    GET /api/calculations
+    GET /api/history
 
 
 Json response example:

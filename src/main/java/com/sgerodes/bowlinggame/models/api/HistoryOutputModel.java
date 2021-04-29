@@ -1,30 +1,25 @@
-package com.sgerodes.bowlinggame.models.db;
+package com.sgerodes.bowlinggame.models.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
 @ApiModel(value = "Stored calculation")
-public class CalculationPersistenceModel {
+public class HistoryOutputModel {
 
-    @Id
-    @GeneratedValue
+    @ApiModelProperty(example = "1")
     protected Long id;
     @ApiModelProperty(example = "[[1, 2], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 7, 6]]")
     protected String initialInput;
     @ApiModelProperty(example = "75")
     protected Integer overallPoints;
 
-    public CalculationPersistenceModel(String initialInput, Integer overallPoints) {
+    public HistoryOutputModel(String initialInput, Integer overallPoints) {
         this.initialInput = initialInput;
         this.overallPoints = overallPoints;
     }
 
-    public CalculationPersistenceModel() {
+    public HistoryOutputModel() {
 
     }
 
